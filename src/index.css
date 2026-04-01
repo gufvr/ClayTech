@@ -1,0 +1,85 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --color-brand: rgb(5, 45, 81);
+  --color-surface-light: rgb(240, 235, 229);
+  --color-surface-dark: rgb(56, 57, 62);
+  --color-accent: rgb(14, 116, 144);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.65s ease-out both;
+}
+
+.animate-delay-100 {
+  animation-delay: 0.1s;
+}
+
+.animate-delay-200 {
+  animation-delay: 0.2s;
+}
+
+.animate-delay-300 {
+  animation-delay: 0.3s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-fade-up {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.55s ease-out,
+    transform 0.55s ease-out;
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cta-shadow {
+  box-shadow:
+    0 4px 14px rgba(5, 45, 81, 0.35),
+    0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.cta-shadow:hover {
+  box-shadow:
+    0 8px 24px rgba(5, 45, 81, 0.45),
+    0 4px 10px rgba(0, 0, 0, 0.1);
+}
